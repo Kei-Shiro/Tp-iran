@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	}
 
 	if (mb_strlen($nom, 'UTF-8') > 120) {
-		$errors[] = 'Le nom doit faire moins de 120 caracteres.';
+		$errors[] = 'Le nom doit faire moins de 120 caractères.';
 	}
 
 	if ($slug === '') {
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$check = $db->prepare('SELECT COUNT(*) FROM categories WHERE slug = ? AND id != ?');
 		$check->execute([$slug, $id]);
 		if ((int)$check->fetchColumn() > 0) {
-			$errors[] = 'Ce slug existe deja.';
+			$errors[] = 'Ce slug existe déjà.';
 		}
 	}
 
@@ -78,7 +78,7 @@ function generateSlug(string $text): string
 require_once '../../includes/header.php';
 ?>
 
-<h1>Modifier la categorie</h1>
+<h1>Modifier la catégorie</h1>
 
 <?php if (!empty($errors)): ?>
 	<div class="errors">
@@ -100,7 +100,7 @@ require_once '../../includes/header.php';
 	</div>
 
 	<div class="form-actions">
-		<button type="submit" class="btn-primary"><i class="fa-regular fa-floppy-disk"></i> Mettre a jour</button>
+		<button type="submit" class="btn-primary"><i class="fa-regular fa-floppy-disk"></i> Mettre à jour</button>
 		<a href="list.php" class="btn-secondary">Annuler</a>
 	</div>
 </form>

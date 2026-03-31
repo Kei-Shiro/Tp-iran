@@ -66,16 +66,16 @@ require_once '../../includes/header.php';
 ?>
 
 <div class="page-header">
-	<h1>Gestion des categories</h1>
-	<a href="create.php" class="btn-primary"><i class="fa-solid fa-plus"></i> Nouvelle categorie</a>
+	<h1>Gestion des catégories</h1>
+	<a href="create.php" class="btn-primary"><i class="fa-solid fa-plus"></i> Nouvelle catégorie</a>
 </div>
 
 <?php if (isset($_GET['success'])): ?>
-	<p class="success">Categorie <?= $_GET['success'] === 'deleted' ? 'supprimee' : 'enregistree' ?> avec succes.</p>
+	<p class="success">Catégorie <?= $_GET['success'] === 'deleted' ? 'supprimée' : 'enregistrée' ?> avec succès.</p>
 <?php endif; ?>
 
 <?php if (isset($_GET['error']) && $_GET['error'] === 'linked'): ?>
-	<div class="errors"><p class="error"><i class="fa-solid fa-circle-exclamation"></i> Impossible de supprimer cette categorie: des articles y sont lies.</p></div>
+	<div class="errors"><p class="error"><i class="fa-solid fa-circle-exclamation"></i> Impossible de supprimer cette catégorie : des articles y sont liés.</p></div>
 <?php endif; ?>
 
 <?php if (isset($_GET['error']) && $_GET['error'] === 'token'): ?>
@@ -87,10 +87,10 @@ require_once '../../includes/header.php';
 		<input type="text" name="q" value="<?= htmlspecialchars($q) ?>" placeholder="Rechercher par nom ou slug">
 		<button type="submit" class="btn-secondary"><i class="fa-solid fa-magnifying-glass"></i> Rechercher</button>
 		<?php if ($q !== ''): ?>
-			<a href="list.php" class="btn-secondary">Reinitialiser</a>
+			<a href="list.php" class="btn-secondary">Réinitialiser</a>
 		<?php endif; ?>
 	</form>
-	<p class="results-count"><?= $totalItems ?> resultat(s)</p>
+	<p class="results-count"><?= $totalItems ?> résultat(s)</p>
 </div>
 
 <table class="data-table">
@@ -105,7 +105,7 @@ require_once '../../includes/header.php';
 	</thead>
 	<tbody>
 	<?php if (empty($categories)): ?>
-		<tr><td colspan="5" class="table-empty">Aucune categorie trouvee.</td></tr>
+		<tr><td colspan="5" class="table-empty">Aucune catégorie trouvée.</td></tr>
 	<?php endif; ?>
 	<?php foreach ($categories as $cat): ?>
 		<tr>
@@ -128,7 +128,7 @@ require_once '../../includes/header.php';
 
 <?php if ($totalPages > 1): ?>
 	<nav class="pagination" aria-label="Pagination categories">
-		<a class="btn-secondary <?= $page <= 1 ? 'disabled' : '' ?>" href="?<?= htmlspecialchars(buildQuery(['page' => max(1, $page - 1)])) ?>">Precedent</a>
+		<a class="btn-secondary <?= $page <= 1 ? 'disabled' : '' ?>" href="?<?= htmlspecialchars(buildQuery(['page' => max(1, $page - 1)])) ?>">Précédent</a>
 		<span class="page-current">Page <?= $page ?> / <?= $totalPages ?></span>
 		<a class="btn-secondary <?= $page >= $totalPages ? 'disabled' : '' ?>" href="?<?= htmlspecialchars(buildQuery(['page' => min($totalPages, $page + 1)])) ?>">Suivant</a>
 	</nav>

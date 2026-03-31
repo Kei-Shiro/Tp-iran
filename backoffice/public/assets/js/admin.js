@@ -84,6 +84,14 @@
 	document.addEventListener('DOMContentLoaded', () => {
 		initCounters();
 		initTinyMce();
+
+		document.querySelectorAll('form.article-form').forEach((form) => {
+			form.addEventListener('submit', () => {
+				if (window.tinymce) {
+					window.tinymce.triggerSave();
+				}
+			});
+		});
 	});
 })();
 

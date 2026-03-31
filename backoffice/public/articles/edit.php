@@ -46,22 +46,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$errors[] = 'Le titre est obligatoire.';
 	}
 	if (mb_strlen($titre, 'UTF-8') > 255) {
-		$errors[] = 'Le titre avec mise en forme doit faire moins de 255 caracteres.';
+		$errors[] = 'Le titre avec mise en forme doit faire moins de 255 caractères.';
 	}
 	if (mb_strlen(strip_tags($titre), 'UTF-8') > 255) {
-		$errors[] = 'Le texte du titre doit faire moins de 255 caracteres.';
+		$errors[] = 'Le texte du titre doit faire moins de 255 caractères.';
 	}
 	if ($contenu === '') {
 		$errors[] = 'Le contenu est obligatoire.';
 	}
 	if ($categorie_id <= 0) {
-		$errors[] = 'Veuillez choisir une categorie.';
+		$errors[] = 'Veuillez choisir une catégorie.';
 	}
 	if (strlen($meta_title) > 70) {
-		$errors[] = 'Le meta title doit faire moins de 70 caracteres.';
+		$errors[] = 'Le meta title doit faire moins de 70 caractères.';
 	}
 	if (strlen($meta_description) > 170) {
-		$errors[] = 'La meta description doit faire moins de 170 caracteres.';
+		$errors[] = 'La meta description doit faire moins de 170 caractères.';
 	}
 
 	$slug = generateSlug(strip_tags($titre));
@@ -82,9 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$fileType = mime_content_type($_FILES['image']['tmp_name']);
 
 		if (!in_array($fileType, $allowedTypes, true)) {
-			$errors[] = 'Format d image non autorise (JPG, PNG, WebP uniquement).';
+			$errors[] = 'Format d image non autorisé (JPG, PNG, WebP uniquement).';
 		} elseif ($_FILES['image']['size'] > 2 * 1024 * 1024) {
-			$errors[] = 'L image ne doit pas depasser 2 Mo.';
+			$errors[] = 'L image ne doit pas dépasser 2 Mo.';
 		} else {
 			$ext = strtolower((string)pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
 			$filename = $slug . '-' . time() . '.' . $ext;
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadDir . $filename)) {
 				$image_path = 'assets/images/articles/' . $filename;
 			} else {
-				$errors[] = 'Echec lors du televersement de l image.';
+				$errors[] = 'Échec lors du téléversement de l image.';
 			}
 		}
 	}
@@ -157,7 +157,7 @@ function generateSlug(string $text): string
 require_once '../../includes/header.php';
 ?>
 
-<h1>Modifier l article</h1>
+<h1>Modifier l'article</h1>
 
 <?php if (!empty($errors)): ?>
 	<div class="errors">
@@ -170,14 +170,14 @@ require_once '../../includes/header.php';
 <form method="POST" enctype="multipart/form-data" class="article-form">
 	<div class="form-group">
 		<label for="titre">Titre *</label>
-		<textarea id="titre" name="titre" rows="2" required maxlength="255" data-editor="tinymce-title"><?= htmlspecialchars($titre) ?></textarea>
-		<small>Personnalisation autorisee (gras, italique, couleur), avec slug base sur le texte.</small>
+		<textarea id="titre" name="titre" rows="2" maxlength="255" data-editor="tinymce-title"><?= htmlspecialchars($titre) ?></textarea>
+		<small>Personnalisation autorisée (gras, italique, couleur), avec slug basé sur le texte.</small>
 	</div>
 
 	<div class="form-group">
-		<label for="categorie_id">Categorie *</label>
+		<label for="categorie_id">Catégorie *</label>
 		<select id="categorie_id" name="categorie_id" required>
-			<option value="">-- Choisir une categorie --</option>
+			<option value="">-- Choisir une catégorie --</option>
 			<?php foreach ($categories as $cat): ?>
 				<option value="<?= (int)$cat['id'] ?>" <?= $categorie_id === (int)$cat['id'] ? 'selected' : '' ?>>
 					<?= htmlspecialchars($cat['nom']) ?>
@@ -187,13 +187,13 @@ require_once '../../includes/header.php';
 	</div>
 
 	<div class="form-group">
-		<label for="resume">Resume</label>
+		<label for="resume">Résumé</label>
 		<textarea id="resume" name="resume" rows="3"><?= htmlspecialchars($resume) ?></textarea>
 	</div>
 
 	<div class="form-group">
 		<label for="contenu">Contenu *</label>
-		<textarea id="contenu" name="contenu" rows="20" required data-editor="tinymce-content"><?= htmlspecialchars($contenu) ?></textarea>
+		<textarea id="contenu" name="contenu" rows="20" data-editor="tinymce-content"><?= htmlspecialchars($contenu) ?></textarea>
 	</div>
 
 	<fieldset>
@@ -232,7 +232,7 @@ require_once '../../includes/header.php';
 	</div>
 
 	<div class="form-actions">
-		<button type="submit" class="btn-primary"><i class="fa-regular fa-floppy-disk"></i> Mettre a jour</button>
+		<button type="submit" class="btn-primary"><i class="fa-regular fa-floppy-disk"></i> Mettre à jour</button>
 		<a href="list.php" class="btn-secondary">Annuler</a>
 	</div>
 </form>

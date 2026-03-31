@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <main class="container" style="max-width: 460px; margin: 8vh auto;">
 	<section class="article-form">
 		<h1>Connexion admin</h1>
-		<p>Acces reserve a la redaction.</p>
+		<p>Accès réservé à la rédaction.</p>
 
 		<?php if ($error !== ''): ?>
 			<p class="error"><i class="fa-solid fa-circle-exclamation"></i> <?= htmlspecialchars($error) ?></p>
