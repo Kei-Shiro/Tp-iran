@@ -146,7 +146,7 @@ SELECT
 <p>L Arabie Saoudite, les Emirats arabes unis et l Irak ont annonce pouvoir augmenter leur production a court terme. L OPEP+ a convoque une reunion extraordinaire pour le 20 avril. Aux Etats-Unis, l administration a deja autorise des liberations supplementaires depuis la Reserve strategique.</p>',
     'uploads/detroit-ormuz-tanker.jpg',
     'Petrolier traversant le detroit d Ormuz, entre Iran et peninsule arabique',
-    'Petrole a 140 dollars : le detroit d Ormuz au coeur de la crise | Guerre en Iran',
+    'Petrole a 140 dollars : crise a Ormuz | Guerre en Iran',
     'Analyse de l impact des frappes israeliennes sur les marches petroliers et les risques pour le detroit d Ormuz.',
     'publie',
     '2026-04-16 14:00:00'

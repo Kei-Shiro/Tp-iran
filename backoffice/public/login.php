@@ -11,6 +11,8 @@ if (isset($_SESSION['admin_id'])) {
 }
 
 $error = '';
+$defaultUsername = 'admin';
+$defaultPassword = 'admin123';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$username = trim($_POST['username'] ?? '');
@@ -57,11 +59,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		<form method="post" action="/login">
 			<div class="form-group">
 				<label for="username">Identifiant</label>
-				<input type="text" id="username" name="username" required>
+				<input type="text" id="username" name="username" value="<?= htmlspecialchars($_POST['username'] ?? $defaultUsername) ?>" required>
 			</div>
 			<div class="form-group">
 				<label for="password">Mot de passe</label>
-				<input type="password" id="password" name="password" required>
+				<input type="password" id="password" name="password" value="<?= $defaultPassword ?>" required>
 			</div>
 			<button type="submit" class="btn-primary"><i class="fa-solid fa-right-to-bracket"></i> Se connecter</button>
 		</form>
